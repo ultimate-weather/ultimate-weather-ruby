@@ -31,7 +31,7 @@ jobs:
               circleci tests split --split-by=timings)"
 
             bundle exec rspec \
-              --format progress \
+              --format documentation \
               $TEST_FILES
 
       - store_test_results:
