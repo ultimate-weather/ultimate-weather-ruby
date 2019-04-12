@@ -7,3 +7,4 @@ COPY docker_files/.git-completion.bash /root/
 COPY docker_files/.gitconfig /root/
 RUN apt update
 RUN apt install -y git
+RUN apt install -y vim
