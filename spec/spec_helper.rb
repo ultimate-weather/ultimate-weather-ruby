@@ -3,6 +3,7 @@ require 'capybara'
 require 'capybara/rspec'
 #require 'selenium-webdriver'
 require 'webdrivers'
+require 'browserstack/local'
 
 Capybara.configure do |config|
   config.run_server = false
