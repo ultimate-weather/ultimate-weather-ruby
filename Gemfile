@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rspec'
-gem 'selenium-webdriver'
+#gem 'selenium-webdriver', '2.53.4'
 gem 'capybara'
 gem 'webdrivers'
+gem 'pry'
