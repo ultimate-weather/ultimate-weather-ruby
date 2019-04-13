@@ -6,7 +6,7 @@ require 'webdrivers'
 
 Capybara.configure do |config|
   config.run_server = false
-  config.default_driver = :selenium
+  config.default_driver = :chrome
   config.app_host = 'https://google.com'
 end
 

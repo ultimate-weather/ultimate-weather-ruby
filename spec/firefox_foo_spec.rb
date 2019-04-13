@@ -1,4 +1,4 @@
-describe 'Loads up correctly', :type => :feature do
+describe 'FIREFOX Browser loads up correctly', :type => :feature do
   before :each do
     Capybara.current_driver = :firefox
   end
@@ -7,7 +7,7 @@ describe 'Loads up correctly', :type => :feature do
     search_button_on_page=find(:css, "input[aria-label='Search']")
     expect(search_button_on_page).to be
   end
-  it 'Shows results' do
+  it 'FIREFOX Shows results' do
     visit( @root )
     find(:css, "input[aria-label='Search']").set("123")
     find(:css, "input[aria-label='Search']").send_keys :enter
