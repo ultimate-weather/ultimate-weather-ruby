@@ -7,7 +7,7 @@ describe 'Chrome browser loads correctly', :type => :feature do
     search_button_on_page=find(:css, "input[aria-label='Search']")
     expect(search_button_on_page).to be
   end
-  it 'Chrome browser shows results' do
+  it 'Chrome browser shows results', :happy do
     visit( @root )
     find(:css, "input[aria-label='Search']").set("123\n")
     expect(page).to have_content 'results'
