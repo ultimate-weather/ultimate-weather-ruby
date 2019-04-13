@@ -21,7 +21,7 @@ Capybara.default_max_wait_time = 2
 
 RSpec.configure do |config|
 	config.after(:each) do |example|
-		if ENV["UW-SCREENSHOTS"] == "true"
+		if ENV["UW_SCREENSHOTS"] == "true"
 			if defined? page
         screenshot(example, page)
 			end
