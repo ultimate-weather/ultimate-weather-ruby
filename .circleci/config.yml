@@ -4,6 +4,17 @@ jobs:
     docker:
       - image: circleci/ruby:2.6.2-browsers
     working_directory: ~/repo
+
+    environment:
+      SELENIUM_HOST: hub.browserstack.com
+      BS_AUTOMATE_PROJECT: "Run on circleCI"
+      BS_AUTOMATE_BUILD: "build No. $CIRCLE_BUILD_NUM for circleCI"
+      SELENIUM_PLATFORM: WINDOWS
+      BS_AUTOMATE_OS_VERSION: 10
+      SELENIUM_BROWSER: IE
+      SELENIUM_VERSION: 11
+
+
     steps:
       - checkout
 
@@ -17,6 +28,10 @@ jobs:
             gem install bundler:2.0.1
             bundle update --bundler
             bundle install --jobs=4 --retry=3 --path vendor/bundle
+            wget "https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip"
+            unzip BrowserStackLocal-linux-x64.zip
+            ./BrowserStackLocalenvi "xpVH9NPWHJQLZdR1mbgq":
+            background: true
 
       - save_cache:
           paths:
