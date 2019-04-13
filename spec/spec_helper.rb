@@ -20,16 +20,22 @@ end
 Capybara.default_max_wait_time = 2
 
 RSpec.configure do |config|
-  config.after(:each) do |example|
-		if defined? page
-			tags=''
-			['smoke', 'happy', 'sad'].each {|tag| tags+= '__' + tag if example.metadata[tag.to_sym]}
-      time = Time.new.to_s[0..18].tr(' ','-')
-      description = example.description.tr(' ','_') + tags
-      save_file = "screenshots/#{time}__#{description}.png"
-      page.save_screenshot(save_file)
+	config.after(:each) do |example|
+		if ENV["SCREENSHOTS"] == "true"
+			if defined? page
+        screenshot(example, page)
+			end
     end
   end
+end
+
+def screenshot(example, page)
+  time = Time.new.to_s[0..18].tr(' ','-')
+  description  = example.description.tr(' ','_')
+  tags=''
+  %w(smoke happy sad).each {|tag| tags+= '__' + tag if example.metadata[tag.to_sym]}
+  save_file = "screenshots/#{time}__#{description}#{tags}.png"
+  page.save_screenshot(save_file)
 end
 
 @root="/"
