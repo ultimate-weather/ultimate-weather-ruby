@@ -17,7 +17,7 @@ Capybara.register_driver :firefox do |app|
   Capybara::Selenium::Driver.new(app, browser: :firefox)
 end
 
-if ENV["TEST_IE"]
+if ENV["TEST_IE"] == 'true'
 
 	CONFIG = Hash.new
 	CONFIG['user'] = 'michaeldurrant3'
