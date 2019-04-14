@@ -8,3 +8,10 @@ COPY docker_files/.gitconfig /root/
 RUN apt update
 RUN apt install -y git
 RUN apt install -y vim
+RUN apt install -y ruby
+RUN gem install bundler
+RUN cd /usr/src/app
+WORKDIR /web
+ADD Gemfile /web/
+RUN apt install -y build-essential patch ruby-dev zlib1g-dev liblzma-dev
+RUN bundle
