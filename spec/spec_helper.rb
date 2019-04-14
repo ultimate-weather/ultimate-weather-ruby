@@ -39,7 +39,7 @@ if ENV['TEST_IE'] == 'true'
   capabilities['browser_version'] = ENV['SELENIUM_VERSION'] if ENV['SELENIUM_VERSION']
   capabilities['browserstack.local'] = 'true'
   @caps = capabilities
-  browser = Selenium::WebDriver.for(remote:, url: url, desired_capabilitie: capabilities)
+  browser = Selenium::WebDriver.for(:remote, url: url, desired_capabilities: capabilities)
   @browser = browser
 
   Capybara.register_driver :browserstack do |app|
