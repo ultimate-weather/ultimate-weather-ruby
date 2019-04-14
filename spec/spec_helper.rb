@@ -51,10 +51,11 @@ if ENV['TEST_IE'] == 'true'
   #    @bs_local.start(bs_local_args)
   #  end
 
-    Capybara::Selenium::Driver.new(app,
-    browser: :remote,
-    url: "http://#{CONFIG['user']}:#{CONFIG['key']}@hub-cloud.browserstack.com/wd/hub",
-    desired_capabilities: @caps)
+    Capybara::Selenium::Driver.new(
+      app,
+      browser: :remote,
+      url: "http://#{CONFIG['user']}:#{CONFIG['key']}@hub-cloud.browserstack.com/wd/hub",
+      desired_capabilities: @caps)
   end
 end
 
@@ -73,7 +74,7 @@ def screenshot(example, page)
   time = Time.new.to_s[0..18].tr(' ', '-')
   description = example.description.tr(' ', '_')
   tags = ''
-  %w[smoke happy sad].each { |tag| tags += '__' + tag if example.metadata[tag.to_sym]}
+  %w[smoke happy sad].each { |tag| tags += '__' + tag if example.metadata[tag.to_sym] }
   save_file = "screenshots/#{time}__#{description}#{tags}.png"
   page.save_screenshot(save_file)
 end
