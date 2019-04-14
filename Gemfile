@@ -1,9 +1,9 @@
 source 'http://rubygems.org'
 
-gem 'nokogiri'
-gem 'rspec'
 gem 'capybara'
-gem 'webdrivers'
+gem 'nokogiri'
 gem 'pry'
+gem 'rspec'
 gem 'sinatra'
 gem 'thin'
+gem 'webdrivers'
