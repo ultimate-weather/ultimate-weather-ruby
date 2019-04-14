@@ -54,7 +54,7 @@ if ENV["TEST_IE"] == 'true'
 
   Capybara::Selenium::Driver.new(app,
     :browser => :remote,
-    :url => "http://michaeldurrant3:xpVH9NPWHJQLZdR1mbgq@hub-cloud.browserstack.com/wd/hub",
+    :url => "http://#{CONFIG['user']}:#{CONFIG['key']}@hub-cloud.browserstack.com/wd/hub",
     :desired_capabilities => @caps
   )
 
