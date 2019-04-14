@@ -2,8 +2,8 @@ a=1
 a=1
 def x
   true
-  a=1
-  a=1
+  A=1
+  A=2
 end
 def x
   true
