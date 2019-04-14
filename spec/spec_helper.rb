@@ -39,7 +39,7 @@ if ENV['TEST_IE'] == 'true'
   capabilities['browser_version'] = ENV['SELENIUM_VERSION'] if ENV['SELENIUM_VERSION']
   capabilities['browserstack.local'] = "true"
   @caps = capabilities
-  browser = Selenium::WebDriver.for(:remote, :url => url, :desired_capabilities => capabilities)
+  browser = Selenium::WebDriver.for(:remote, url: url, desired_capabilitie: capabilities)
   @browser = browser
 
   Capybara.register_driver :browserstack do |app|
@@ -52,9 +52,9 @@ if ENV['TEST_IE'] == 'true'
   #  end
 
   Capybara::Selenium::Driver.new(app,
-    :browser => :remote,
-    :url => "http://#{CONFIG['user']}:#{CONFIG['key']}@hub-cloud.browserstack.com/wd/hub",
-    :desired_capabilities => @caps)
+    browser: :remote,
+    url: "http://#{CONFIG['user']}:#{CONFIG['key']}@hub-cloud.browserstack.com/wd/hub",
+    desired_capabilities: @caps)
   end
 end
 
@@ -62,7 +62,7 @@ Capybara.default_max_wait_time = 2
 Capybara.default_driver = :chrome
 
 RSpec.configure do |config|
-  config.after(:each) do |example|
+  config.after do |example|
     if ENV['UW_SCREENSHOTS'] == 'true'
       if defined? page
         screenshot(example, page)
@@ -72,12 +72,12 @@ RSpec.configure do |config|
 end
 
 def screenshot(example, page)
-  time = Time.new.to_s[0..18].tr(' ','-')
+  time = Time.new.to_s[0..18].tr(' ', '-')
   description = example.description.tr(' ', '_')
   tags = ''
-  %w(smoke happy sad).each {|tag| tags+= '__' + tag if example.metadata[tag.to_sym]}
+  %w(smoke happy sad).each { |tag| tags += '__' + tag if example.metadata[tag.to_sym]}
   save_file = "screenshots/#{time}__#{description}#{tags}.png"
   page.save_screenshot(save_file)
 end
 
-@root='/'
+@root = '/'
