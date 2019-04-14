@@ -19,9 +19,9 @@ end
 
 if ENV['TEST_IE'] == 'true'
 
-	CONFIG = Hash.new
-	CONFIG['user'] = ENV['BS_U']
-	CONFIG['key'] = ENV['BS_P']
+  CONFIG = Hash.new
+  CONFIG['user'] = ENV['BS_U']
+  CONFIG['key'] = ENV['BS_P']
 
   require 'selenium/webdriver'
   require 'browserstack/local'
@@ -35,14 +35,14 @@ if ENV['TEST_IE'] == 'true'
   capabilities['build'] = ENV['BS_AUTOMATE_BUILD'] if ENV['BS_AUTOMATE_BUILD']
   capabilities['os'] = ENV['SELENIUM_OS'] || 'Windows'
   capabilities['os_version'] = ENV['SELENIUM_OS_VERSION'] || '10'
-	capabilities['browser'] = ENV['SELENIUM_BROWSER'] || 'IE'
-	capabilities['browser_version'] = ENV['SELENIUM_VERSION'] if ENV['SELENIUM_VERSION']
+  capabilities['browser'] = ENV['SELENIUM_BROWSER'] || 'IE'
+  capabilities['browser_version'] = ENV['SELENIUM_VERSION'] if ENV['SELENIUM_VERSION']
   capabilities['browserstack.local'] = "true"
-	@caps = capabilities
-	browser = Selenium::WebDriver.for(:remote, :url => url, :desired_capabilities => capabilities)
-	@browser = browser
+  @caps = capabilities
+  browser = Selenium::WebDriver.for(:remote, :url => url, :desired_capabilities => capabilities)
+  @browser = browser
 
-	Capybara.register_driver :browserstack do |app|
+  Capybara.register_driver :browserstack do |app|
   # Code to start browserstack local before start of test
   #  @caps = CONFIG['common_caps'].merge(CONFIG['browser_caps'][TASK_ID])
   #  if @caps['browserstack.local'] && @caps['browserstack.local'].to_s == 'true';
@@ -80,4 +80,4 @@ def screenshot(example, page)
   page.save_screenshot(save_file)
 end
 
-@root="/"
+@root='/'
