@@ -20,8 +20,8 @@ end
 if ENV["TEST_IE"] == 'true'
 
 	CONFIG = Hash.new
-	CONFIG['user'] = 'michaeldurrant3'
-	CONFIG['key'] = 'xpVH9NPWHJQLZdR1mbgq'
+	CONFIG['user'] = ENV['BS_U']
+	CONFIG['key'] = ENV['BS_P']
 
 	require 'selenium/webdriver'
 	require 'browserstack/local'
