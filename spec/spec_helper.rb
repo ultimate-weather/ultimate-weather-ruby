@@ -21,40 +21,29 @@ CONFIG = Hash.new
 CONFIG['user'] = 'michaeldurrant3'
 CONFIG['key'] = 'xpVH9NPWHJQLZdR1mbgq'
 
-    require 'selenium/webdriver'
-    require 'browserstack/local'
-    require 'yaml'
+require 'selenium/webdriver'
+require 'browserstack/local'
+require 'yaml'
 
-    ENV["BS_USERNAME"]='michaeldurrant3'
-    ENV["BS_AUTHKEY"]='xpVH9NPWHJQLZdR1mbgq'
-
-    url = "http://#{ENV['BS_USERNAME']}:#{ENV['BS_AUTHKEY']}@hub-cloud.browserstack.com/wd/hub"
-
-    capabilities = Selenium::WebDriver::Remote::Capabilities.new
-
-    capabilities['project'] = ENV['BS_AUTOMATE_PROJECT'] if ENV['BS_AUTOMATE_PROJECT']
-    capabilities['build'] = ENV['BS_AUTOMATE_BUILD'] if ENV['BS_AUTOMATE_BUILD']
-
-    capabilities['os'] = ENV['SELENIUM_OS'] || 'Windows'
-    capabilities['os_version'] = ENV['SELENIUM_OS_VERSION'] || '10'
-
-    capabilities['platform'] = ENV['SELENIUM_PLATFORM'] || 'windows'
-    capabilities['browser'] = ENV['SELENIUM_BROWSER'] || 'IE'
-    capabilities['browser_version'] = ENV['SELENIUM_VERSION'] if ENV['SELENIUM_VERSION']
-    capabilities['browserstack.local'] = "true"
-
-    @caps = capabilities
-
-    browser = Selenium::WebDriver.for(:remote, :url => url, :desired_capabilities => capabilities)
-
-    @browser = browser
-
-
+ENV["BS_USERNAME"]=CONFIG['user']
+ENV["BS_AUTHKEY"]=CONFIG['key']
+url = "http://#{ENV['BS_USERNAME']}:#{ENV['BS_AUTHKEY']}@hub-cloud.browserstack.com/wd/hub"
+capabilities = Selenium::WebDriver::Remote::Capabilities.new
+capabilities['project'] = ENV['BS_AUTOMATE_PROJECT'] if ENV['BS_AUTOMATE_PROJECT']
+capabilities['build'] = ENV['BS_AUTOMATE_BUILD'] if ENV['BS_AUTOMATE_BUILD']
+capabilities['os'] = ENV['SELENIUM_OS'] || 'Windows'
+capabilities['os_version'] = ENV['SELENIUM_OS_VERSION'] || '10'
+capabilities['browser'] = ENV['SELENIUM_BROWSER'] || 'IE'
+capabilities['browser_version'] = ENV['SELENIUM_VERSION'] if ENV['SELENIUM_VERSION']
+capabilities['browserstack.local'] = "true"
+@caps = capabilities
+browser = Selenium::WebDriver.for(:remote, :url => url, :desired_capabilities => capabilities)
+@browser = browser
 
 Capybara.register_driver :browserstack do |app|
-#  @caps = CONFIG['common_caps'].merge(CONFIG['browser_caps'][TASK_ID])
 
-  # Code to start browserstack local before start of test
+# Code to start browserstack local before start of test
+#  @caps = CONFIG['common_caps'].merge(CONFIG['browser_caps'][TASK_ID])
 #  if @caps['browserstack.local'] && @caps['browserstack.local'].to_s == 'true';
 #    @bs_local = BrowserStack::Local.new
 #    bs_local_args = {"key" => "#{CONFIG['key']}"}
