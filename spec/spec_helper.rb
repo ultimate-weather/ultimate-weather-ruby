@@ -43,19 +43,20 @@ if ENV['TEST_IE'] == 'true'
   @browser = browser
 
   Capybara.register_driver :browserstack do |app|
-  # Code to start browserstack local before start of test
-  #  @caps = CONFIG['common_caps'].merge(CONFIG['browser_caps'][TASK_ID])
-  #  if @caps['browserstack.local'] && @caps['browserstack.local'].to_s == 'true';
-  #    @bs_local = BrowserStack::Local.new
-  #    bs_local_args = {"key" => "#{CONFIG['key']}"}
-  #    @bs_local.start(bs_local_args)
-  #  end
+    # Code to start browserstack local before start of test
+    #  @caps = CONFIG['common_caps'].merge(CONFIG['browser_caps'][TASK_ID])
+    #  if @caps['browserstack.local'] && @caps['browserstack.local'].to_s == 'true';
+    #    @bs_local = BrowserStack::Local.new
+    #    bs_local_args = {"key" => "#{CONFIG['key']}"}
+    #    @bs_local.start(bs_local_args)
+    #  end
 
     Capybara::Selenium::Driver.new(
       app,
       browser: :remote,
       url: "http://#{CONFIG['user']}:#{CONFIG['key']}@hub-cloud.browserstack.com/wd/hub",
-      desired_capabilities: @caps)
+      desired_capabilities: @caps
+      )
   end
 end
 
