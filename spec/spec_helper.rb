@@ -19,7 +19,7 @@ end
 
 if ENV['TEST_IE'] == 'true'
 
-  CONFIG = Hash.new
+  CONFIG = {}
   CONFIG['user'] = ENV['BS_U']
   CONFIG['key'] = ENV['BS_P']
 
@@ -37,9 +37,9 @@ if ENV['TEST_IE'] == 'true'
   capabilities['os_version'] = ENV['SELENIUM_OS_VERSION'] || '10'
   capabilities['browser'] = ENV['SELENIUM_BROWSER'] || 'IE'
   capabilities['browser_version'] = ENV['SELENIUM_VERSION'] if ENV['SELENIUM_VERSION']
-  capabilities['browserstack.local'] = "true"
+  capabilities['browserstack.local'] = 'true'
   @caps = capabilities
-  browser = Selenium::WebDriver.for(:remote, url: url, desired_capabilitie: capabilities)
+  browser = Selenium::WebDriver.for(remote:, url: url, desired_capabilitie: capabilities)
   @browser = browser
 
   Capybara.register_driver :browserstack do |app|
