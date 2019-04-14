@@ -28,10 +28,10 @@ jobs:
             gem install bundler:2.0.1
             bundle update --bundler
             bundle install --jobs=4 --retry=3 --path vendor/bundle
-            wget "https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip"
-            unzip BrowserStackLocal-linux-x64.zip
-            ./BrowserStackLocalenvi "xpVH9NPWHJQLZdR1mbgq":
-            background: true
+#            wget "https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip"
+#            unzip BrowserStackLocal-linux-x64.zip
+#            ./BrowserStackLocalenvi "xpVH9NPWHJQLZdR1mbgq":
+#            background: true
 
       - save_cache:
           paths:
