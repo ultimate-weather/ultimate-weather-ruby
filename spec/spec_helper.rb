@@ -19,7 +19,7 @@ end
 
 if ENV['TEST_IE'] == 'true'
 
-  CONFIG = {}
+  CONFIG = {}.freeze
   CONFIG['user'] = ENV['BS_U'.freeze]
   CONFIG['key'] = ENV['BS_P'.freeze]
 
