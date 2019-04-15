@@ -74,7 +74,7 @@ end
 def screenshot(example, page)
   tags = ''
   %w[smoke happy sad].each { |tag| tags += '__' + tag if example.metadata[tag.to_sym] }
-  save_file = "screenshots/#{time}__#{self.title(example)}#{tags}.png"
+  save_file = "screenshots/#{time}__#{title(example)}#{tags}.png"
   page.save_screenshot(save_file)
 end
 
