@@ -20,8 +20,8 @@ end
 if ENV['TEST_IE'] == 'true'
 
   CONFIG = {}
-  CONFIG['user'] = ENV['BS_U']
-  CONFIG['key'] = ENV['BS_P']
+  CONFIG['user'] = ENV['BS_U'].freeze
+  CONFIG['key'] = ENV['BS_P'].freeze
 
   require 'selenium/webdriver'
   require 'browserstack/local'
