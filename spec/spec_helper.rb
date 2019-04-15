@@ -73,7 +73,6 @@ end
 
 # rubocop:disable all
 def screenshot(example, page)
-# rubocop:enable all
   time = Time.new.to_s[0..18].tr(' ', '-')
   description = example.description.tr(' ', '_')
   tags = ''
@@ -81,5 +80,6 @@ def screenshot(example, page)
   save_file = "screenshots/#{time}__#{description}#{tags}.png"
   page.save_screenshot(save_file)
 end
+# rubocop:enable all
 
 @root = '/'
