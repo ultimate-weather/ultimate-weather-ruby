@@ -71,15 +71,17 @@ RSpec.configure do |config|
   end
 end
 
-# rubocop:disable all
 def screenshot(example, page)
-  time = Time.new.to_s[0..18].tr(' ', '-')
-  description = example.description.tr(' ', '_')
   tags = ''
   %w[smoke happy sad].each { |tag| tags += '__' + tag if example.metadata[tag.to_sym] }
-  save_file = "screenshots/#{time}__#{description}#{tags}.png"
+  save_file = "screenshots/#{time}__#{title(example)}#{tags}.png"
   page.save_screenshot(save_file)
 end
-# rubocop:enable all
+
+def title(example)
+  time = Time.new.to_s[0..18].tr(' ', '-')
+  description = example.description.tr(' ', '_')
+  time + '__' + description
+end
 
 @root = '/'
