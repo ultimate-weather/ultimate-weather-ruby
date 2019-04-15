@@ -1,4 +1,4 @@
-describe 'Chrome browser loads correctly', :type => :feature do
+describe 'Chrome browser loads correctly', type: :feature do
   before :each do
     Capybara.current_driver = :chrome
   end

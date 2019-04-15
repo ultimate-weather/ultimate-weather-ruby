@@ -1,5 +1,4 @@
-describe 'IE browser loads correctly', :type => :feature do
-
+describe 'IE browser loads correctly', type: :feature do
   it 'IE browser has the expected search input field on bing.com', :ie do
     if ENV['TEST_IE'] == 'true'
       Capybara.current_driver = :browserstack

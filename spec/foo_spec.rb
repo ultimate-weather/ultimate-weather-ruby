@@ -1,4 +1,4 @@
-describe 'Default browser is Chrome and loads correctly', :type => :feature do
+describe 'Default browser is Chrome and loads correctly', type: :feature do
   it 'Default browser is Chrome', :smoke do
     visit(@root)
     expect(page.driver.browser.to_s).to match(/WebDriver.*Chrome/)
