@@ -56,7 +56,7 @@ if ENV['TEST_IE'] == 'true'
       browser: :remote,
       url: "http://#{CONFIG['user']}:#{CONFIG['key']}@hub-cloud.browserstack.com/wd/hub",
       desired_capabilities: @caps
-      )
+    )
   end
 end
 
