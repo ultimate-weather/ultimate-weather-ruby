@@ -74,11 +74,11 @@ end
 def screenshot(example, page)
   tags = ''
   %w[smoke happy sad].each { |tag| tags += '__' + tag if example.metadata[tag.to_sym] }
-  save_file = "screenshots/#{time}__#{this.title(example)}#{tags}.png"
+  save_file = "screenshots/#{time}__#{self.title(example)}#{tags}.png"
   page.save_screenshot(save_file)
 end
 
-def this.title(example)
+def self.title(example)
   time = Time.new.to_s[0..18].tr(' ', '-')
   description = example.description.tr(' ', '_')
   time + '__' + description
